@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <link rel="stylesheet" href="index.css">
+    <link rel="stylesheet" href="parcours.css">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
@@ -16,5 +16,125 @@
             <li><a href="CV.html">CV</a></li>
         </nav>
     </header>
+
+<div class="container">
+    <h1 class="page-title">Mon Parcours</h1>
+
+    <section class="section">
+        <h2 class="section-title">Formation</h2>
+        <div class="timeline">
+            <div class="timeline-item">
+                <div class="timeline-dot"></div>
+                <div class="timeline-content">
+                    <div class="period">2023 - 2026 (en cours)</div>
+                    <div class="degree">BUT Réseaux & Télécommunications</div>
+                    <div class="institution">IUT de Valence</div>
+                    <div class="location">Valence, France</div>
+                    <div class="description">
+                        Parcours Cybersécurité
+                        <ul>
+                            <li>Administration de réseaux et systèmes (Linux, Cisco)</li>
+                            <li>Sécurité des infrastructures et protocoles</li>
+                            <li>Programmation et scripting (Python, Bash)</li>
+                            <li>Projets concrets : mise en place de SI sécurisés</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <div class="timeline-item">
+                <div class="timeline-dot"></div>
+                <div class="timeline-content">
+                    <div class="period">2020 - 2023</div>
+                    <div class="degree">Lycée Générale</div>
+                    <div class="institution">Lycée Albert Triboulet </div>
+                    <div class="location">Romans-sur-Isère, France</div>
+                    <div class="description">
+                        Spécialités : Mathématiques & NSI (Numérique et Sciences Informatiques)</strong><br>
+            Mention : Assez Bien
+
+                        <ul>
+                            <li>Programmation orientée objet</li>
+                            <li>Bases de données relationnelles</li>
+                            <li>Algorithmique et structures de données</li>
+                            <li>Introduction aux réseaux et systèmes informatiques</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+<section class="section">
+    <h2 class="section-title">Expériences Professionnelles</h2>
+    <div class="timeline">
+        <div class="timeline-item">
+            <div class="timeline-dot"></div>
+            <div class="timeline-content">
+                <div class="period">Mars 2024 - Juin 2024</div>
+                <div class="degree">Stage Administration Systèmes & Réseaux</div>
+                <div class="institution">Air Corsica</div>
+                <div class="location">Ajaccio, France</div>
+                <div class="description">
+                    Administration systèmes & réseaux
+                    <ul>
+                        <li>Mise en place d'une application via AWS</li>
+                        <li>Déploiement des procédures de cybersécurité</li>
+                        <li>Développement d'un script d'automatisation avec PowerShell</li>
+                        <li>Support aux utilisateurs, déploiement des postes client</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+</div>
+
+
+
+    <script>
+        // Intersection Observer pour les animations au scroll
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach((entry, index) => {
+                if (entry.isIntersecting) {
+                    // Délai progressif pour chaque élément
+                    setTimeout(() => {
+                        entry.target.classList.add('animate');
+                    }, index * 200);
+                }
+            });
+        }, observerOptions);
+
+        // Observer tous les éléments de timeline
+        document.addEventListener('DOMContentLoaded', () => {
+            const timelineItems = document.querySelectorAll('.timeline-item');
+            timelineItems.forEach(item => {
+                observer.observe(item);
+            });
+        });
+
+        // Animation du titre principal
+        const titleObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.transform = 'translateY(0)';
+                    entry.target.style.opacity = '1';
+                }
+            });
+        }, observerOptions);
+
+        document.addEventListener('DOMContentLoaded', () => {
+            const pageTitle = document.querySelector('.page-title');
+            pageTitle.style.transform = 'translateY(30px)';
+            pageTitle.style.opacity = '0';
+            pageTitle.style.transition = 'all 0.8s ease';
+            titleObserver.observe(pageTitle);
+        });
+    </script>
 </body>
 </html>
